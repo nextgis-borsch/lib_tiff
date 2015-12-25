@@ -35,6 +35,6 @@ endif()
 
 set(repo_include)
 
-set(JPEG12_INCLUDE_DIR ${EP_BASE}/Install/${name}_EP/include/ CACHE PATH "Include directory for 12-bit libjpeg")
+set(JPEG12_INCLUDE_DIR ${EP_BASE}/Install/${name}_EP/include/ CACHE PATH "Include directory for 12-bit libjpeg" FORCE)
 
-list(APPEND find_extproject_CMAKE_ARGS -DBUILD_JPEG_12=ON)
+list(APPEND find_extproject_CMAKE_ARGS -DBUILD_JPEG_12=ON -DBUILD_JPEG_8=OFF)
