@@ -25,12 +25,16 @@
 # DEALINGS IN THE SOFTWARE.
 ################################################################################
 
-set(repo_name lib_lzma)
+set(repo_name lib_jpeg)
 
 if(BUILD_SHARED_LIBS)    
-    set(repo_project lzma)
+    set(repo_project jpeg)
 else()
-    set(repo_project lzmastatic)
+    set(repo_project jpegstatic)
 endif()
 
 set(repo_include)
+
+set(JPEG12_INCLUDE_DIR ${EP_BASE}/Install/${name}_EP/include/ CACHE PATH "Include directory for 12-bit libjpeg")
+
+list(APPEND find_extproject_CMAKE_ARGS -DBUILD_JPEG_12=ON)

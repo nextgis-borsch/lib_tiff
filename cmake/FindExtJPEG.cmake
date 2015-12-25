@@ -25,12 +25,12 @@
 # DEALINGS IN THE SOFTWARE.
 ################################################################################
 
-set(repo_name lib_lzma)
+set(repo_name lib_jpeg)
 
 if(BUILD_SHARED_LIBS)    
-    set(repo_project lzma)
+    set(repo_project jpeg)
 else()
-    set(repo_project lzmastatic)
+    set(repo_project jpegstatic)
 endif()
 
 set(repo_include)

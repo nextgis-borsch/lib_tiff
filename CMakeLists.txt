@@ -200,23 +200,15 @@ check_function_exists(jbg_newlen HAVE_JBG_NEWLEN)
 set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES_SAVE})
 set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES_SAVE})
 
-# liblzma2
+# liblzma
 find_anyproject(LibLZMA)
 set(LZMA_SUPPORT 0)
-if(LIBLZMA_FOUND)
+if(LibLZMA_FOUND)
   set(LZMA_SUPPORT 1)
 endif()
 
 # 8/12-bit jpeg mode
-option(jpeg12 "enable libjpeg 8/12-bit dual mode (requires separate
-12-bit libjpeg build)" ON)
-set(JPEG12_INCLUDE_DIR JPEG12_INCLUDE_DIR-NOTFOUND CACHE PATH "Include directory for 12-bit libjpeg")
-set(JPEG12_LIBRARY JPEG12_LIBRARY-NOTFOUND CACHE FILEPATH "12-bit libjpeg library")
-set(JPEG12_FOUND FALSE)
-if (JPEG12_INCLUDE_DIR AND JPEG12_LIBRARY)
-  set(JPEG12_LIBRARIES ${JPEG12_LIBRARY})
-  set(JPEG12_FOUND TRUE)
-endif()
+find_anyproject(JPEG12)
 if (JPEG12_FOUND)
   set(JPEG_DUAL_MODE_8_12 1)
   set(LIBJPEG_12_PATH "${JPEG12_INCLUDE_DIR}/jpeglib.h")
@@ -275,6 +267,7 @@ add_subdirectory(html)
 #message(STATUS "EXTRA_DIST: ${EXTRA_DIST}")
 set(zlib ON)
 set(jpeg ON)
+set(jpeg12 ON)
 set(jbig ON)
 set(lzma ON)
 
@@ -306,7 +299,7 @@ message(STATUS "  JPEG support:                       ${jpeg} (requested) ${JPEG
 message(STATUS "  Old JPEG support:                   ${old-jpeg} (requested) ${JPEG_FOUND} (availability)")
 message(STATUS "  JPEG 8/12 bit dual mode:            ${jpeg12} (requested) ${JPEG12_FOUND} (availability)")
 message(STATUS "  ISO JBIG support:                   ${jbig} (requested) ${JBIG_FOUND} (availability)")
-message(STATUS "  LZMA2 support:                      ${lzma} (requested) ${LIBLZMA_FOUND} (availability)")
+message(STATUS "  LZMA2 support:                      ${lzma} (requested) ${LibLZMA_FOUND} (availability)")
 message(STATUS "")
 message(STATUS "  C++ support:                        ${cxx} (requested) ${CXX_SUPPORT} (availability)")
 message(STATUS "")
