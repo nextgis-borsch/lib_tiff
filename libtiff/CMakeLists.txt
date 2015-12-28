@@ -139,7 +139,7 @@ if(HAVE_LD_VERSION_SCRIPT)
 endif()
      
 target_link_extlibraries(${LIB_NAME}) 
-export(TARGETS ${LIB_NAME} FILE ${LIB_NAME}-exports.cmake)
+export(TARGETS ${LIB_NAME} FILE "../${LIB_NAME}-exports.cmake")
 
 
 install(TARGETS ${LIB_NAME}
