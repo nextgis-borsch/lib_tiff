@@ -67,7 +67,13 @@ function(find_extproject name)
     endif()
     
     if(EXISTS ${EP_BASE}/Build/${name}_EP/ext_options.cmake) 
+        # TODO: read lines and store them in this project ext_options.cmake
         include(${EP_BASE}/Build/${name}_EP/ext_options.cmake)
+        file(STRINGS ${EP_BASE}/Build/${name}_EP/ext_options.cmake _OPTIONS)
+        foreach(_OPTION ${_OPTIONS})
+            set(WITHOPT "${WITHOPT}_OPTION\n")
+        endforeach()
+        set(WITHOPT ${WITHOPT} "" PARENT_SCOPE)
     endif()
     
     get_cmake_property(_variableNames VARIABLES)
