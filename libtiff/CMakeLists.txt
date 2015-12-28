@@ -124,7 +124,7 @@ endif()
 
 add_library(${LIB_NAME} ${tiff_SOURCES} ${tiff_HEADERS} ${nodist_tiff_HEADERS}
             ${tiff_port_SOURCES} libtiff.def)
-target_link_libraries(${LIB_NAME} ${TIFF_LIBRARY_DEPS})
+# target_link_libraries(${LIB_NAME} ${TIFF_LIBRARY_DEPS})
 set_target_properties(${LIB_NAME} PROPERTIES SOVERSION ${SO_COMPATVERSION})
 if(NOT CYGWIN)
     # This property causes shared libraries on Linux to have the full version
@@ -174,7 +174,7 @@ if(cxx)
   install(FILES ${tiffxx_HEADERS}
           DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 
-    target_link_extlibraries(${LIB_NAME}xx) 
+    #target_link_extlibraries(${LIB_NAME}xx) 
     export(TARGETS ${LIB_NAME}xx APPEND FILE ${LIB_NAME}-exports.cmake)
 
 endif()
