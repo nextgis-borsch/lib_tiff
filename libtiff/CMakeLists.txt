@@ -110,7 +110,10 @@ else()
   list(APPEND tiff_SOURCES tif_unix.c)
 endif()
 
+set(PARENT_TARGET_LINK_LIB ${TARGET_LINK_LIB})
 include(find_anyproject)
+set(TARGET_LINK_LIB ${PARENT_TARGET_LINK_LIB})
+
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR}
@@ -139,8 +142,7 @@ if(HAVE_LD_VERSION_SCRIPT)
 endif()
      
 target_link_extlibraries(${LIB_NAME}) 
-export(TARGETS ${LIB_NAME} FILE "../${LIB_NAME}-exports.cmake")
-
+set(EXPORT_TARGETS ${LIB_NAME})
 
 install(TARGETS ${LIB_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
@@ -174,7 +176,9 @@ if(cxx)
   install(FILES ${tiffxx_HEADERS}
           DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 
-    #target_link_extlibraries(${LIB_NAME}xx) 
-    export(TARGETS ${LIB_NAME}xx APPEND FILE ${LIB_NAME}-exports.cmake)
+    set(EXPORT_TARGETS ${EXPORT_TARGETS} ${LIB_NAME}xx)
 
 endif()
+
+export(TARGETS ${EXPORT_TARGETS} FILE "../${LIB_NAME}-exports.cmake")
+
