@@ -110,10 +110,14 @@ else()
   list(APPEND tiff_SOURCES tif_unix.c)
 endif()
 
-set(PARENT_TARGET_LINK_LIB ${TARGET_LINK_LIB})
-include(find_anyproject)
-set(TARGET_LINK_LIB ${PARENT_TARGET_LINK_LIB})
+set(_DEPENDENCY_LIB ${DEPENDENCY_LIB})
 
+include(find_anyproject)
+if(TIFF_LIBRARY_DEPS)
+    set(TARGET_LINK_LIB ${TIFF_LIBRARY_DEPS})
+endif()
+
+set(DEPENDENCY_LIB ${_DEPENDENCY_LIB})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR}

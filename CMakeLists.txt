@@ -80,8 +80,7 @@ set(PACKAGE_BUGREPORT "tiff@lists.maptools.org")
 
 report_version(${PROJECT_NAME} ${SO_VERSION})    
 
-
-enable_testing()
+# enable_testing()
 
 macro(current_date var)
   if(UNIX)
