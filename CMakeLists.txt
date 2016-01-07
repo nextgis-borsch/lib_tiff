@@ -202,7 +202,7 @@ set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES_SAVE})
 # liblzma
 find_anyproject(LibLZMA)
 set(LZMA_SUPPORT 0)
-if(LibLZMA_FOUND)
+if(LIBLZMA_FOUND)
   set(LZMA_SUPPORT 1)
 endif()
 
@@ -299,7 +299,7 @@ message(STATUS "  JPEG support:                       ${jpeg} (requested) ${JPEG
 message(STATUS "  Old JPEG support:                   ${old-jpeg} (requested) ${JPEG_FOUND} (availability)")
 message(STATUS "  JPEG 8/12 bit dual mode:            ${jpeg12} (requested) ${JPEG12_FOUND} (availability)")
 message(STATUS "  ISO JBIG support:                   ${jbig} (requested) ${JBIG_FOUND} (availability)")
-message(STATUS "  LZMA2 support:                      ${lzma} (requested) ${LibLZMA_FOUND} (availability)")
+message(STATUS "  LZMA2 support:                      ${lzma} (requested) ${LIBLZMA_FOUND} (availability)")
 message(STATUS "")
 message(STATUS "  C++ support:                        ${cxx} (requested) ${CXX_SUPPORT} (availability)")
 message(STATUS "")
