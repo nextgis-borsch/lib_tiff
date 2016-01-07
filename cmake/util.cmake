@@ -63,11 +63,11 @@ endfunction(check_version)
 
 function(report_version name ver)
 
-    if(NOT WIN32)
+#    if(NOT WIN32)
       string(ASCII 27 Esc)
       set(BoldYellow  "${Esc}[1;33m")
       set(ColourReset "${Esc}[m")
-    endif()    
+#    endif()    
         
     message(STATUS "${BoldYellow}${name} version ${ver}${ColourReset}")
     

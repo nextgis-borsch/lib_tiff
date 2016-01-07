@@ -79,7 +79,7 @@ function(find_anyproject name)
         endif() 
         
         # message(STATUS "IS_FOUND ${IS_FOUND} ${${IS_FOUND}}")
-        if(${${IS_FOUND}}) 
+        if(${IS_FOUND}) 
             set(${IS_FOUND} TRUE CACHE BOOL "use ${name} external")  
             mark_as_advanced(${IS_FOUND})
         elseif(find_anyproject_REQUIRED)
