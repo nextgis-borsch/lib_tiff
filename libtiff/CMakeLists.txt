@@ -158,6 +158,9 @@ install(FILES ${tiff_HEADERS} ${nodist_tiff_HEADERS}
 
 if(cxx)
   add_library(${LIB_NAME}xx ${tiffxx_SOURCES} ${tiffxx_HEADERS})
+  if(BUILD_SHARED_LIBS)
+    set_target_properties(${LIB_NAME}xx PROPERTIES DEFINE_SYMBOL TIFF_DLL_EXPORTS)
+  endif()
   target_link_libraries(${LIB_NAME}xx ${LIB_NAME})
   set_target_properties(${LIB_NAME}xx PROPERTIES SOVERSION ${SO_COMPATVERSION})
   if(NOT CYGWIN)
@@ -180,7 +183,7 @@ if(cxx)
   install(FILES ${tiffxx_HEADERS}
           DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 
-    set(EXPORT_TARGETS ${EXPORT_TARGETS} ${LIB_NAME}xx)
+    # set(EXPORT_TARGETS ${EXPORT_TARGETS} ${LIB_NAME}xx)
 
 endif()
 
