@@ -57,7 +57,7 @@ endif ()
 
 # handle the QUIETLY and REQUIRED arguments and set JBIG_FOUND to TRUE if
 # all listed variables are TRUE
-include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
+include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(JBIG
                                   REQUIRED_VARS JBIG_LIBRARY JBIG_INCLUDE_DIR
                                   VERSION_VAR JBIG_VERSION_STRING)
