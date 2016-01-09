@@ -172,9 +172,11 @@ check_type_size("ptrdiff_t" SIZEOF_PTRDIFF_T)
 set(CMAKE_EXTRA_INCLUDE_FILES ${CMAKE_EXTRA_INCLUDE_FILES_SAVE})
 
 macro(report_values)
+  if(VERBOSE_OUTPUT)  
   foreach(val ${ARGV})
     message(STATUS "${val} set to ${${val}}")
   endforeach()
+  endif()
 endmacro()
 
 set(TIFF_INT8_T "signed char")

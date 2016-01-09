@@ -271,7 +271,7 @@ set(jpeg12 ON)
 set(jbig ON)
 set(lzma ON)
 
-
+if(VERBOSE_OUTPUT)
 message(STATUS "")
 message(STATUS "Libtiff is now configured for ${host}")
 message(STATUS "")
@@ -306,6 +306,7 @@ message(STATUS "")
 # message(STATUS "  X Athena Widgets support:           ${HAVE_XAW}")
 message(STATUS "  OpenGL support:                     ${HAVE_OPENGL}")
 message(STATUS "")
+endif()
 
 add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 
