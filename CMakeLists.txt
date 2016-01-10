@@ -30,17 +30,24 @@ cmake_policy(VERSION 2.8.12)
 # Set MacOSX @rpath usage globally.
 if (POLICY CMP0020)
   cmake_policy(SET CMP0020 NEW)
-endif(POLICY CMP0020)
-if (POLICY CMP0042)
-  cmake_policy(SET CMP0042 NEW)
-endif(POLICY CMP0042)
+endif()
 # Use new variable expansion policy.
 if (POLICY CMP0053)
   cmake_policy(SET CMP0053 NEW)
-endif(POLICY CMP0053)
+endif()
 if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
-endif(POLICY CMP0054)
+endif()
+
+if (POLICY CMP0022)
+  cmake_policy(SET CMP0022 OLD)
+endif()
+if (POLICY CMP0042)
+  cmake_policy(SET CMP0042 OLD) # osx rpath
+endif()
+if (POLICY CMP0011)
+  cmake_policy(SET CMP0011 OLD) # policy setting
+endif()
 
 # Project version
 project(tiff C)
