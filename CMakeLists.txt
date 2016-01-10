@@ -39,16 +39,6 @@ if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
-if (POLICY CMP0022)
-  cmake_policy(SET CMP0022 OLD)
-endif()
-if (POLICY CMP0042)
-  cmake_policy(SET CMP0042 OLD) # osx rpath
-endif()
-if (POLICY CMP0011)
-  cmake_policy(SET CMP0011 OLD) # policy setting
-endif()
-
 # Project version
 project(tiff C)
 
