@@ -23,10 +23,10 @@
 # LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 # OF THIS SOFTWARE.
 
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 
-# Default policy is from 2.8.9
-cmake_policy(VERSION 2.8.9)
+# Default policy is from 2.8.12
+cmake_policy(VERSION 2.8.12)
 # Set MacOSX @rpath usage globally.
 if (POLICY CMP0020)
   cmake_policy(SET CMP0020 NEW)
