@@ -161,7 +161,7 @@ if(cxx)
   if(BUILD_SHARED_LIBS)
     set_target_properties(${LIB_NAME}xx PROPERTIES DEFINE_SYMBOL TIFF_DLL_EXPORTS)
   endif()
-  target_link_libraries(${LIB_NAME}xx ${LIB_NAME})
+  target_link_libraries(${LIB_NAME}xx PRIVATE ${LIB_NAME})
   set_target_properties(${LIB_NAME}xx PROPERTIES SOVERSION ${SO_COMPATVERSION})
   if(NOT CYGWIN)
     # This property causes shared libraries on Linux to have the full version
