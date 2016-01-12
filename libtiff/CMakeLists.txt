@@ -188,5 +188,5 @@ if(cxx)
   endif()
 endif()
 
-export(TARGETS ${EXPORT_TARGETS} FILE "../${LIB_NAME}-exports.cmake")
+export(TARGETS ${EXPORT_TARGETS} FILE "../${LIB_NAME}-exports.cmake" EXPORT_LINK_INTERFACE_LIBRARIES)
 
