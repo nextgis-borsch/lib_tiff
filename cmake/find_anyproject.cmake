@@ -121,6 +121,7 @@ function(target_link_extlibraries name)
 endfunction()
 
 function(write_ext_options)
+    message(STATUS "${PROJECT_NAME}: write_ext_options -- ${EXPORTS_PATHS}")
     if(NOT BUILD_SHARED_LIBS AND EXPORTS_PATHS)
         foreach(EXPORT_PATH ${EXPORTS_PATHS})   
             string(CONCAT EXPORTS_PATHS_STR ${EXPORTS_PATHS_STR} " \"${EXPORT_PATH}\"")
