@@ -75,7 +75,7 @@ function(include_exports_path include_path)
         list(APPEND EXPORTS_PATHS "${include_path}")
         set(EXPORTS_PATHS "${EXPORTS_PATHS}" PARENT_SCOPE)
         include(${include_path})
-    endif()    
+    endif()
 endfunction() 
 
 function(find_extproject name)
