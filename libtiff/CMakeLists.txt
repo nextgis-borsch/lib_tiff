@@ -111,6 +111,7 @@ else()
 endif()
 
 set(_DEPENDENCY_LIB ${DEPENDENCY_LIB})
+set(_EXPORTS_PATHS ${EXPORTS_PATHS})
 
 include(find_anyproject)
 if(TIFF_LIBRARY_DEPS)
@@ -118,6 +119,7 @@ if(TIFF_LIBRARY_DEPS)
 endif()
 
 set(DEPENDENCY_LIB ${_DEPENDENCY_LIB})
+set(EXPORTS_PATHS ${_EXPORTS_PATHS})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR}
