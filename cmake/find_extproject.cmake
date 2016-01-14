@@ -76,6 +76,9 @@ function(include_exports_path include_path)
         set(EXPORTS_PATHS "${EXPORTS_PATHS}" PARENT_SCOPE)
         include(${include_path})
     endif()
+    
+    
+    message(STATUS "${PROJECT_NAME}: include_exports_path -- ${EXPORTS_PATHS} include_path - ${include_path}")
 endfunction() 
 
 function(find_extproject name)
@@ -247,4 +250,5 @@ function(find_extproject name)
     install( DIRECTORY ${EP_BASE}/Install/${name}_EP/ DESTINATION ${CMAKE_INSTALL_PREFIX} )
         
     set(EXPORTS_PATHS ${EXPORTS_PATHS} PARENT_SCOPE)
+    message(STATUS "${PROJECT_NAME}: find_extproject -- ${EXPORTS_PATHS}")
 endfunction()
