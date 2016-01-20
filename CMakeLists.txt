@@ -144,7 +144,7 @@ set(LOGLUV_SUPPORT ${logluv})
 option(mdi "support for Microsoft Document Imaging" ON)
 set(MDI_SUPPORT ${mdi})
 
-include(find_anyproject)
+include(FindAnyProject)
 
 find_anyproject(ZLIB)
 set(ZLIB_SUPPORT 0)
