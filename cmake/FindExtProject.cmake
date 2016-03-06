@@ -168,6 +168,7 @@ function(find_extproject name)
     ExternalProject_Add(${name}_EP
         GIT_REPOSITORY ${EP_URL}/${repo_name}
         CMAKE_ARGS ${find_extproject_CMAKE_ARGS}
+        UPDATE_DISCONNECTED 1
     )
         
     find_package(Git)
@@ -242,7 +243,9 @@ function(find_extproject name)
         include_directories(${EP_BASE}/Install/${name}_EP/include/${inc})
     endforeach ()    
     
-    install( DIRECTORY ${EP_BASE}/Install/${name}_EP/ DESTINATION ${CMAKE_INSTALL_PREFIX} )
+    install( DIRECTORY ${EP_BASE}/Install/${name}_EP/ 
+             DESTINATION ${CMAKE_INSTALL_PREFIX} 
+             COMPONENT libraries)
         
     set(EXPORTS_PATHS ${EXPORTS_PATHS} PARENT_SCOPE)
 endfunction()
