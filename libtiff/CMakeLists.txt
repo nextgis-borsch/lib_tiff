@@ -113,7 +113,7 @@ endif()
 set(_DEPENDENCY_LIB ${DEPENDENCY_LIB})
 set(_EXPORTS_PATHS ${EXPORTS_PATHS})
 
-include(find_anyproject)
+include(FindAnyProject)
 if(TIFF_LIBRARY_DEPS)
     set(TARGET_LINK_LIB ${TIFF_LIBRARY_DEPS})
 endif()
