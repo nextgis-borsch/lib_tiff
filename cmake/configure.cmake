@@ -6,6 +6,10 @@ include(CheckIncludeFile)
 include(CheckTypeSize)
 include(CheckFunctionExists)
 
+if(CMAKE_GENERATOR_TOOLSET MATCHES "*xp")
+    add_definitions(-D_WIN32_WINNT=0x0501)
+endif()
+
 # These are annoyingly verbose, produce false positives or don't work
 # nicely with all supported compiler versions, so are disabled unless
 # explicitly enabled.
