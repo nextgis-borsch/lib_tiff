@@ -250,8 +250,10 @@ report_values(TIFF_INCLUDES TIFF_LIBRARY_DEPS)
 # Process subdirectories
 add_subdirectory(port)
 add_subdirectory(libtiff)
+if(NOT SKIP_BUILD_DOCS)
 add_subdirectory(man)
 add_subdirectory(html)
+endif()
 
 #message(STATUS "EXTRA_DIST: ${EXTRA_DIST}")
 set(zlib ON)
