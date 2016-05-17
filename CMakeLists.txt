@@ -248,7 +248,7 @@ endif()
 report_values(TIFF_INCLUDES TIFF_LIBRARY_DEPS)
 
 if(NOT BUILD_SHARED_LIBS)
-    if(UNIX)
+    if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
         set( CMAKE_CXX_FLAGS "-fpic ${CMAKE_CXX_FLAGS}" )
         set( CMAKE_C_FLAGS   "-fpic ${CMAKE_C_FLAGS}" )  
     endif()
