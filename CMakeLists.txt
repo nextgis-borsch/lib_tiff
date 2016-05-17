@@ -247,6 +247,13 @@ endif()
 
 report_values(TIFF_INCLUDES TIFF_LIBRARY_DEPS)
 
+if(NOT BUILD_SHARED_LIBS)
+    if(UNIX)
+        set( CMAKE_CXX_FLAGS "-fpic ${CMAKE_CXX_FLAGS}" )
+        set( CMAKE_C_FLAGS   "-fpic ${CMAKE_C_FLAGS}" )  
+    endif()
+endif()
+
 # Process subdirectories
 add_subdirectory(port)
 add_subdirectory(libtiff)
