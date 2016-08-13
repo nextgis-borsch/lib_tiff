@@ -269,7 +269,7 @@ set(jpeg12 ON)
 set(jbig ON)
 set(lzma ON)
 
-if(NOT SUPRESS_VERBOSE_OUTPUT)
+if(NOT SUPPRESS_VERBOSE_OUTPUT)
     message(STATUS "")
     message(STATUS "Libtiff is now configured for ${host}")
     message(STATUS "")
