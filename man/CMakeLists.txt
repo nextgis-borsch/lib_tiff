@@ -22,6 +22,7 @@
 # LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 # OF THIS SOFTWARE.
 
+if(NOT OSX_FRAMEWORK)
 set(man1_MANS
   bmp2tiff.1
   fax2ps.1
@@ -102,3 +103,4 @@ install(FILES ${man3_MANS}
         DESTINATION "${CMAKE_INSTALL_MANDIR}/man3")
 
 extra_dist(${man1_MANS} ${man3_MANS})
+endif()

@@ -22,6 +22,7 @@
 # LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 # OF THIS SOFTWARE.
 
+if( NOT OSX_FRAMEWORK)
 set(docfiles
   addingtags.html
   bugs.html
@@ -85,3 +86,4 @@ add_subdirectory(images)
 add_subdirectory(man)
 
 extra_dist(${docfiles})
+endif()

@@ -1,5 +1,26 @@
 
-include(GNUInstallDirs)
+if(OSX_FRAMEWORK AND (BUILD_SHARED_LIBS OR BUILD_STATIC_LIBS))
+  message(FATAL_ERROR "Only OSX_FRAMEWORK key or any or both BUILD_SHARED_LIBS
+                       and BUILD_STATIC_LIBS keys are permitted")
+endif()
+
+if(OSX_FRAMEWORK)
+  set(INSTALL_BIN_DIR "${CMAKE_INSTALL_PREFIX}/Applications" CACHE INTERNAL "Installation directory for executables" FORCE)
+  set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/Library/Frameworks" CACHE INTERNAL "Installation directory for libraries" FORCE)
+  set(SKIP_INSTALL_HEADERS ON)
+  set(SKIP_INSTALL_EXECUTABLES ON)
+  set(SKIP_INSTALL_FILES ON)
+  set(SKIP_INSTALL_EXPORT ON)
+  set(BUILD_SHARED_LIBS ON)
+else()
+  include(GNUInstallDirs)
+
+  set(INSTALL_BIN_DIR ${CMAKE_INSTALL_BINDIR} CACHE INTERNAL "Installation directory for executables" FORCE)
+  set(INSTALL_LIB_DIR ${CMAKE_INSTALL_LIBDIR} CACHE INTERNAL "Installation directory for libraries" FORCE)
+  set(INSTALL_INC_DIR ${CMAKE_INSTALL_INCLUDEDIR} CACHE INTERNAL "Installation directory for headers" FORCE)
+endif()
+
+
 include(CheckCCompilerFlag)
 include(CheckCSourceCompiles)
 include(CheckIncludeFile)
@@ -176,7 +197,7 @@ check_type_size("ptrdiff_t" SIZEOF_PTRDIFF_T)
 set(CMAKE_EXTRA_INCLUDE_FILES ${CMAKE_EXTRA_INCLUDE_FILES_SAVE})
 
 macro(report_values)
-  if(VERBOSE_OUTPUT)  
+  if(VERBOSE_OUTPUT)
   foreach(val ${ARGV})
     message(STATUS "${val} set to ${${val}}")
   endforeach()
@@ -436,6 +457,3 @@ set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
 set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libtiff-4.pc.in
                ${CMAKE_BINARY_DIR}/libtiff-4.pc)
-
-        
-        

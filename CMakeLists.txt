@@ -67,7 +67,7 @@ set(PACKAGE_VERSION "${PROJECT_VERSION}${tiff_VERSION_ALPHA}")
 set(PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
 set(PACKAGE_BUGREPORT "tiff@lists.maptools.org")
 
-report_version(${PROJECT_NAME} ${SO_VERSION})    
+report_version(${PROJECT_NAME} ${SO_VERSION})
 
 # enable_testing()
 
@@ -96,8 +96,8 @@ set(EXTRA_DIST
   configure.com
   nmake.opt
   libtiff-4.pc.in)
-  
-include(configure)  
+
+include(configure)
 
 configure_file(${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake IMMEDIATE @ONLY)
 
@@ -142,6 +142,8 @@ find_anyproject(ZLIB)
 set(ZLIB_SUPPORT 0)
 if(ZLIB_FOUND)
   set(ZLIB_SUPPORT 1)
+else()
+  set(ZLIB_FOUND FALSE)
 endif()
 set(ZIP_SUPPORT ${ZLIB_SUPPORT})
 # Option for Pixar log-format algorithm
@@ -160,6 +162,8 @@ find_anyproject(JPEG)
 set(JPEG_SUPPORT FALSE)
 if(JPEG_FOUND)
   set(JPEG_SUPPORT TRUE)
+else()
+  set(JPEG_FOUND FALSE)
 endif()
 
 option(old-jpeg "support for Old JPEG compression (read-only)" ON)
@@ -193,6 +197,8 @@ find_anyproject(LibLZMA)
 set(LZMA_SUPPORT 0)
 if(LIBLZMA_FOUND)
   set(LZMA_SUPPORT 1)
+else()
+  set(LIBLZMA_FOUND FALSE)
 endif()
 
 # 8/12-bit jpeg mode
@@ -201,6 +207,8 @@ if (JPEG12_FOUND)
   set(JPEG_DUAL_MODE_8_12 1)
   set(LIBJPEG_12_PATH "\"${JPEG12_INCLUDE_DIR}/jpeglib.h\"")
   add_definitions(-DLIBJPEG_12_PATH="${JPEG12_INCLUDE_DIR}/jpeglib.h")
+else()
+  set(JPEG12_FOUND FALSE)
 endif()
 
 # Includes used by libtiff (and tests)
@@ -250,7 +258,7 @@ report_values(TIFF_INCLUDES TIFF_LIBRARY_DEPS)
 if(NOT BUILD_SHARED_LIBS)
     if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
         set( CMAKE_CXX_FLAGS "-fpic ${CMAKE_CXX_FLAGS}" )
-        set( CMAKE_C_FLAGS   "-fpic ${CMAKE_C_FLAGS}" )  
+        set( CMAKE_C_FLAGS   "-fpic ${CMAKE_C_FLAGS}" )
     endif()
 endif()
 
@@ -258,8 +266,8 @@ endif()
 add_subdirectory(port)
 add_subdirectory(libtiff)
 if(NOT SKIP_BUILD_DOCS)
-add_subdirectory(man)
-add_subdirectory(html)
+  add_subdirectory(man)
+  add_subdirectory(html)
 endif()
 
 #message(STATUS "EXTRA_DIST: ${EXTRA_DIST}")
@@ -307,4 +315,3 @@ if(NOT SUPPRESS_VERBOSE_OUTPUT)
 endif()
 
 add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-
