@@ -125,11 +125,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR}
                     ${TIFF_INCLUDES})
 
-if(BUILD_SHARED_LIBS)
-    set(LIB_NAME ${PROJECT_NAME})
-else()    
-    set(LIB_NAME ${PROJECT_NAME}static)
-endif()
+set(LIB_NAME ${PROJECT_NAME})
 
 add_library(${LIB_NAME} ${tiff_SOURCES} ${tiff_HEADERS} ${nodist_tiff_HEADERS}
             ${tiff_port_SOURCES} libtiff.def)

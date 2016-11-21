@@ -21,14 +21,8 @@
 ################################################################################
 
 set(repo_name lib_jbig)
-
-if(find_extproject_SHARED)    
-    set(repo_project jbig)
-else()
-    set(repo_project jbigstatic)
-endif()
-
-set(repo_include "")
+set(repo_project jbig)
+set(repo_include)
 
 if(find_extproject_SHARED)
     add_definitions(-DJBIG_DLL_IMPORTS)
