@@ -466,6 +466,7 @@ if (check-ycbcr-subsampling)
   set(CHECK_JPEG_YCBCR_SUBSAMPLING 1)
 endif()
 
+if(NOT OSX_FRAMEWORK)
 # Generate pkg-config file
 set(prefix "${CMAKE_INSTALL_PREFIX}")
 set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
@@ -473,3 +474,4 @@ set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
 set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libtiff-4.pc.in
                ${CMAKE_BINARY_DIR}/libtiff-4.pc)
+endif()
