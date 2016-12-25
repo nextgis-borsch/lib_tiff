@@ -7,6 +7,7 @@ endif()
 if(OSX_FRAMEWORK)
   set(INSTALL_BIN_DIR "${CMAKE_INSTALL_PREFIX}/Applications" CACHE INTERNAL "Installation directory for executables" FORCE)
   set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/Library/Frameworks" CACHE INTERNAL "Installation directory for libraries" FORCE)
+  set(INSTALL_INC_DIR "${INSTALL_LIB_DIR}/${PROJECT_NAME}.framework/Headers" CACHE INTERNAL "Installation directory for headers" FORCE)
   set(SKIP_INSTALL_HEADERS ON)
   set(SKIP_INSTALL_EXECUTABLES ON)
   set(SKIP_INSTALL_FILES ON)
@@ -23,7 +24,7 @@ if(OSX_FRAMEWORK)
   set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
   # the RPATH to be used when installing
-  set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR}")
+  set(CMAKE_INSTALL_RPATH "@executable_path/../../../../Library/Frameworks")
 
   # don't add the automatically determined parts of the RPATH
   # which point to directories outside the build tree to the install RPATH
@@ -467,11 +468,11 @@ if (check-ycbcr-subsampling)
 endif()
 
 if(NOT OSX_FRAMEWORK)
-# Generate pkg-config file
-set(prefix "${CMAKE_INSTALL_PREFIX}")
-set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
-set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
-set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libtiff-4.pc.in
-               ${CMAKE_BINARY_DIR}/libtiff-4.pc)
+    # Generate pkg-config file
+    set(prefix "${CMAKE_INSTALL_PREFIX}")
+    set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
+    set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
+    set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libtiff-4.pc.in
+                   ${CMAKE_BINARY_DIR}/libtiff-4.pc)
 endif()
