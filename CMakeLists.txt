@@ -69,6 +69,10 @@ set(PACKAGE_BUGREPORT "tiff@lists.maptools.org")
 
 report_version(${PROJECT_NAME} ${SO_VERSION})
 
+if(OSX_FRAMEWORK)
+    set(FRAMEWORK_VERSION "${SO_MAJOR}")
+endif()
+
 # enable_testing()
 
 macro(current_date var)
