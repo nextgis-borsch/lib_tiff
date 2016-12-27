@@ -58,6 +58,10 @@ function(check_version major minor micro alpha so_major so_minor so_rev)
     set(${so_minor} ${_SO_MINOR} PARENT_SCOPE)
     set(${so_rev} ${_SO_REVISION} PARENT_SCOPE)
 
+    # Store version string in file for installer needs
+    file(TIMESTAMP ${CMAKE_SOURCE_DIR}/configure.ac VERSION_DATETIME "%Y-%m-%d %H:%M:%S" UTC)
+    file(WRITE ${CMAKE_BINARY_DIR}/version.str "${_SO_MAJOR}.${_SO_MINOR}.${_SO_REVISION}\n${VERSION_DATETIME}")
+
 endfunction(check_version)
 
 
@@ -67,11 +71,11 @@ function(report_version name ver)
       string(ASCII 27 Esc)
       set(BoldYellow  "${Esc}[1;33m")
       set(ColourReset "${Esc}[m")
-#    endif()    
-        
+#    endif()
+
     message(STATUS "${BoldYellow}${name} version ${ver}${ColourReset}")
-    
-endfunction()  
+
+endfunction()
 
 
 # macro to find packages on the host OS
@@ -124,4 +128,3 @@ macro( find_exthost_program )
         find_program( ${ARGN} )
     endif()
 endmacro()
-
