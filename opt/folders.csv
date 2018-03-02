@@ -1,0 +1,14 @@
+.,.,,"ChangeLog,ac,COPYRIGHT,README,VERSION"
+build,build,skip,
+config,config,skip,
+contrib,contrib,skip,
+html,html,,html
+html/images,html/images,,"gif,jpeg,jpg"
+html/man,html/man,,html
+libtiff,libtiff,,"def,map,c,h,in,cxx,hxx"
+m4,m4,skip,
+man,man,,"1,3tiff"
+port,port,,"c,h"
+test,test,,"c,cmake,h,sh"
+test/images,test/images,,"tiff,pgm,ppm"
+tools,tools,,c

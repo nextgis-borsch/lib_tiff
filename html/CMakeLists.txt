@@ -80,7 +80,7 @@ set(docfiles
   v4.0.4beta.html)
 
 install(FILES ${docfiles}
-        DESTINATION "${LIBTIFF_DOCDIR}/html")
+        DESTINATION "${INSTALL_DOC_DIR}/html")
 
 add_subdirectory(images)
 add_subdirectory(man)

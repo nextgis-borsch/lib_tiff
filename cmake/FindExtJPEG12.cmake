@@ -20,20 +20,6 @@
 # along with this script.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-set(repo_name lib_jpeg)
-set(repo_project jpeg12)
-set(repo_include jpeg12)
-
-if(OSX_FRAMEWORK)
-    set(JPEG12_INCLUDE_DIR ${EXT_INSTALL_DIR}/Library/Frameworks/jpeg12.framework/Headers/ CACHE PATH "Include directory for 12-bit libjpeg" FORCE)
-else()
-    set(JPEG12_INCLUDE_DIR ${EXT_INSTALL_DIR}/include/ CACHE PATH "Include directory for 12-bit libjpeg" FORCE)
-endif()
-
-list(APPEND find_extproject_CMAKE_ARGS -DBUILD_JPEG_12=ON -DBUILD_JPEG_8=OFF)
-
-if(find_extproject_SHARED)
-    add_definitions(-DJPEG_DLL_IMPORTS)
-else()
-    add_definitions(-DJPEG_STATIC)
-endif()
+set(repo nextgis-borsch/lib_jpeg)
+set(repo_type github)
+# set(repo_branch master) # No need to set as master is default value

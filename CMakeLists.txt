@@ -67,13 +67,13 @@ set(PACKAGE_VERSION "${PROJECT_VERSION}${tiff_VERSION_ALPHA}")
 set(PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
 set(PACKAGE_BUGREPORT "tiff@lists.maptools.org")
 
-report_version(${PROJECT_NAME} ${SO_VERSION})
+report_version(${PROJECT_NAME} "${VERSION} (${SO_VERSION})")
 
 if(OSX_FRAMEWORK)
-    set(FRAMEWORK_VERSION "${SO_MAJOR}")
+    set(FRAMEWORK_VERSION "${LIBTIFF_MAJOR_VERSION}")
 endif()
 
-# enable_testing()
+enable_testing()
 
 macro(current_date var)
   if(UNIX)
@@ -268,9 +268,15 @@ if(NOT BUILD_SHARED_LIBS)
     endif()
 endif()
 
+# Redefine here
+set(PACKAGE_NAME ${PROJECT_NAME})
+string(TOUPPER ${PACKAGE_NAME} PACKAGE_UPPER_NAME)
+
 # Process subdirectories
 add_subdirectory(port)
 add_subdirectory(libtiff)
+add_subdirectory(tools)
+add_subdirectory(test)
 if(NOT SKIP_BUILD_DOCS)
   add_subdirectory(man)
   add_subdirectory(html)
@@ -320,23 +326,30 @@ if(NOT SUPPRESS_VERBOSE_OUTPUT)
     message(STATUS "")
 endif()
 
-if (REGISTER_PACKAGE)
+add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 
-    set(EXPORT_PACKAGE_NAME TIFF)
-    set(EXPORT_PACKAGE_NAME_UPPER TIFF)
-    set(EXPORT_PACKAGE_LIB_NAME ${PROJECT_NAME})
+# Export package ===============================================================
 
-    export(PACKAGE ${EXPORT_PACKAGE_NAME})
-
-    include(CMakePackageConfigHelpers)
-    configure_package_config_file(
-        ${CMAKE_SOURCE_DIR}/cmake/PackageConfig.cmake.in
-        ${CMAKE_CURRENT_BINARY_DIR}/${EXPORT_PACKAGE_NAME}Config.cmake
-    INSTALL_DESTINATION ${CMAKE_CURRENT_BINARY_DIR}  )
-    write_basic_package_version_file(
-        ${CMAKE_CURRENT_BINARY_DIR}/${EXPORT_PACKAGE_NAME}ConfigVersion.cmake
-        VERSION ${VERSION}
-        COMPATIBILITY AnyNewerVersion )
+if(REGISTER_PACKAGE)
+    # Export the package for use from the build-tree
+    # (this registers the build-tree with a global CMake-registry)
+    export(PACKAGE ${PACKAGE_UPPER_NAME})
 endif()
 
-add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+# Archiving ====================================================================
+
+set(CPACK_PACKAGE_NAME "${PACKAGE_NAME}")
+set(CPACK_PACKAGE_VENDOR "${PACKAGE_VENDOR}")
+set(CPACK_PACKAGE_VERSION "${VERSION}")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "${PACKAGE_NAME} Installation")
+set(CPACK_PACKAGE_RELOCATABLE TRUE)
+set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_MONOLITHIC_INSTALL ON)
+set(CPACK_STRIP_FILES TRUE)
+
+# Get cpack zip archive name
+get_cpack_filename(${VERSION} PROJECT_CPACK_FILENAME)
+set(CPACK_PACKAGE_FILE_NAME ${PROJECT_CPACK_FILENAME})
+
+include(CPack)

@@ -96,7 +96,7 @@ set(doc_DATA ${indexfile} ${docfiles})
 extra_dist(${doc_DATA})
 
 install(FILES ${doc_DATA}
-        DESTINATION "${LIBTIFF_DOCDIR}/html/man")
+        DESTINATION "${INSTALL_DOC_DIR}/html/man")
 
 # htmldoc target to regenerate HTML files
 string(REPLACE ";" "^" escaped_docfiles "${docfiles}")
@@ -107,4 +107,3 @@ add_custom_target(htmldoc
   "-DINDEXFILE=${indexfile}"
   "-DDOCFILES=${escaped_docfiles}"
   -P "${CMAKE_CURRENT_SOURCE_DIR}/HtmlDoc.cmake")
-
