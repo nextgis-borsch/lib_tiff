@@ -30,7 +30,7 @@ set(man1_MANS
   ppm2tiff.1
   raw2tiff.1
   # rgb2ycbcr.1
-  thumbnail.1
+  # thumbnail.1
   tiff2bw.1
   tiff2pdf.1
   tiff2ps.1

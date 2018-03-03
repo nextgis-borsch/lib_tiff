@@ -75,7 +75,7 @@ set(docfiles
     ppm2tiff.1.html
     raw2tiff.1.html
     # rgb2ycbcr.1.html
-    thumbnail.1.html
+    # thumbnail.1.html
     tiff2bw.1.html
     tiff2pdf.1.html
     tiff2ps.1.html
