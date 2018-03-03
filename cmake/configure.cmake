@@ -466,7 +466,7 @@ if (check-ycbcr-subsampling)
   set(CHECK_JPEG_YCBCR_SUBSAMPLING 1)
 endif()
 
-if(NOT OSX_FRAMEWORK)
+if(UNIX AND NOT OSX_FRAMEWORK)
     # Generate pkg-config file
     set(prefix "${CMAKE_INSTALL_PREFIX}")
     set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
