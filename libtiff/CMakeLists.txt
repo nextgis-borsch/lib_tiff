@@ -216,7 +216,7 @@ if(cxx)
   endif()
 endif()
 
-if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
+if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL AND NOT WIN32)
   install(FILES ${CMAKE_BINARY_DIR}/libtiff-4.pc
         DESTINATION "${INSTALL_LIB_DIR}/pkgconfig")
 endif()
