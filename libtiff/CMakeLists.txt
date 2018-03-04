@@ -170,7 +170,7 @@ else()
 endif()
 
 if(cxx)
-  add_library(${LIB_NAME}xx ${tiffxx_SOURCES} ${tiffxx_HEADERS})
+  add_library(${LIB_NAME}xx ${tiffxx_SOURCES} ${tiffxx_HEADERS} libtiffxx.def)
   if(BUILD_SHARED_LIBS)
     set_target_properties(${LIB_NAME}xx PROPERTIES DEFINE_SYMBOL TIFF_DLL_EXPORTS)
   endif()
