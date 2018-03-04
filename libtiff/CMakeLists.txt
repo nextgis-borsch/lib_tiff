@@ -101,9 +101,6 @@ set(tiffxx_HEADERS
 
 set(tiffxx_SOURCES
   tif_stream.cxx)
-if(MSVC)
-    set(tiffxx_SOURCES ${tiffxx_SOURCES} libtiffxx.def)
-endif()
 
 if(WIN32_IO)
   extra_dist(tif_unix.c)
