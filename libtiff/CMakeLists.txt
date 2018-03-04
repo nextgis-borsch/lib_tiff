@@ -146,7 +146,6 @@ if(HAVE_LD_VERSION_SCRIPT)
 endif()
 
 target_link_extlibraries(${LIB_NAME})
-set(EXPORT_TARGETS ${LIB_NAME})
 
 install(TARGETS ${LIB_NAME}
     EXPORT ${PACKAGE_UPPER_NAME}Targets
@@ -192,7 +191,7 @@ if(cxx)
   endif()
 
   install(TARGETS ${LIB_NAME}xx
-      EXPORT ${PACKAGE_UPPER_NAME}Targets
+      # EXPORT ${PACKAGE_UPPER_NAME}Targets
       RUNTIME DESTINATION ${INSTALL_BIN_DIR}
       LIBRARY DESTINATION ${INSTALL_LIB_DIR}
       ARCHIVE DESTINATION ${INSTALL_LIB_DIR}
@@ -213,10 +212,6 @@ if(cxx)
     install(FILES ${tiffxx_HEADERS}
           DESTINATION "${INSTALL_INC_DIR}")
   endif()
-
-  if(NOT BUILD_SHARED_LIBS)
-    set(EXPORT_TARGETS ${EXPORT_TARGETS} ${LIB_NAME}xx)
-  endif()
 endif()
 
 if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL AND NOT WIN32)
@@ -227,11 +222,6 @@ endif()
 
 # Add path to includes to build-tree export
 target_include_directories(${LIB_NAME} PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-)
-
-target_include_directories(${LIB_NAME}xx PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
 )
