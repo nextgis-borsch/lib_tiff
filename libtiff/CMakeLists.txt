@@ -101,6 +101,9 @@ set(tiffxx_HEADERS
 
 set(tiffxx_SOURCES
   tif_stream.cxx)
+if(MSVC)
+    set(tiffxx_SOURCES ${tiffxx_SOURCES} libtiffxx.def)
+endif()
 
 if(WIN32_IO)
   extra_dist(tif_unix.c)
@@ -170,7 +173,7 @@ else()
 endif()
 
 if(cxx)
-  add_library(${LIB_NAME}xx ${tiffxx_SOURCES} ${tiffxx_HEADERS} libtiffxx.def)
+  add_library(${LIB_NAME}xx ${tiffxx_SOURCES} ${tiffxx_HEADERS})
   if(BUILD_SHARED_LIBS)
     set_target_properties(${LIB_NAME}xx PROPERTIES DEFINE_SYMBOL TIFF_DLL_EXPORTS)
   endif()

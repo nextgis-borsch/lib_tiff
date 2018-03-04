@@ -1,1 +1,3 @@
-EXPORTS	TIFFStreamOpen
+EXPORTS
+    ?TIFFStreamOpen@@YAPAUtiff@@PBDPAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z
+    ?TIFFStreamOpen@@YAPAUtiff@@PBDPAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z
