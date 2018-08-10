@@ -1,4 +1,4 @@
-.,.,,"ChangeLog,ac,COPYRIGHT,README,VERSION"
+.,.,,"ChangeLog,ac,COPYRIGHT,README,VERSION,pc.in"
 build,build,skip,
 config,config,skip,
 contrib,contrib,skip,
