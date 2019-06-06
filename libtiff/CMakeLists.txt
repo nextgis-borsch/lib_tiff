@@ -93,8 +93,10 @@ set(tiff_SOURCES
   tif_tile.c
   tif_version.c
   tif_warning.c
+  tif_webp.c
   tif_write.c
-  tif_zip.c)
+  tif_zip.c
+  tif_zstd.c)
 
 set(tiffxx_HEADERS
   tiffio.hxx)
