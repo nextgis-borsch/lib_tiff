@@ -33,7 +33,6 @@
  */
 
 #include <assert.h>
-#include <limits.h>
 
 /*
  * function template for strtol, strtoll and strtoimax.

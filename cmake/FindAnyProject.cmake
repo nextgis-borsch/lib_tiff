@@ -3,8 +3,8 @@
 # Purpose:  CMake build scripts
 # Author:   Dmitry Baryshnikov, polimax@mail.ru
 ################################################################################
-# Copyright (C) 2015-2018, NextGIS <info@nextgis.com>
-# Copyright (C) 2015-2018 Dmitry Baryshnikov
+# Copyright (C) 2015-2019, NextGIS <info@nextgis.com>
+# Copyright (C) 2015-2019 Dmitry Baryshnikov
 #
 # This script is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -164,6 +164,11 @@ function(find_anyproject name)
             set(Qt5_LUPDATE_EXECUTABLE Qt5::lupdate PARENT_SCOPE)
             set(Qt5Widgets_UIC_EXECUTABLE Qt5::uic PARENT_SCOPE)
             set(Qt5Core_RCC_EXECUTABLE Qt5::rcc PARENT_SCOPE)
+
+            if(${UPPER_NAME} STREQUAL "ZLIB" AND BUILD_STATIC_LIBS AND UNIX)
+                set(${UPPER_NAME}_LIBRARIES z)
+                set(${UPPER_NAME}_LIBRARY z)
+            endif()
 
             if(${UPPER_NAME}_LIBRARIES)
                 set(${UPPER_NAME}_LIBRARIES ${${UPPER_NAME}_LIBRARIES} CACHE INTERNAL "library ${name}")
