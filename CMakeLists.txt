@@ -30,18 +30,17 @@ cmake_policy(VERSION 2.8.12)
 # Set MacOSX @rpath usage globally.
 if (POLICY CMP0020)
   cmake_policy(SET CMP0020 NEW)
-endif()
+endif(POLICY CMP0020)
+if (POLICY CMP0042)
+  cmake_policy(SET CMP0042 NEW)
+endif(POLICY CMP0042)
 # Use new variable expansion policy.
 if (POLICY CMP0053)
   cmake_policy(SET CMP0053 NEW)
-endif()
+endif(POLICY CMP0053)
 if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
-endif()
-# Fix behavior of CMAKE_C_STANDARD when targeting macOS.
-if (POLICY CMP0025)
-  cmake_policy(SET CMP0025 NEW)
-endif ()
+endif(POLICY CMP0054)
 
 # Project version
 project(tiff C)
