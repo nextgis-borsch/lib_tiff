@@ -35,6 +35,7 @@ __RCSID("$NetBSD: strtol.c,v 1.18 2008/08/20 12:42:26 joerg Exp $");
 #include <ctype.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #define	_FUNCNAME	strtoll
 #define	__INT		long long

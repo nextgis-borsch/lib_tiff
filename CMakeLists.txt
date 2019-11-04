@@ -38,6 +38,10 @@ endif()
 if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
+# Fix behavior of CMAKE_C_STANDARD when targeting macOS.
+if (POLICY CMP0025)
+  cmake_policy(SET CMP0025 NEW)
+endif ()
 
 # Project version
 project(tiff C)
@@ -217,6 +221,14 @@ else()
   set(JPEG12_FOUND FALSE)
 endif()
 
+# libwebp
+find_anyproject(WEBP)
+if(WEBP_FOUND)
+  set(WEBP_SUPPORT 1)
+else()
+  set(WEBP_SUPPORT 0)
+endif()
+
 # Includes used by libtiff (and tests)
 if(ZLIB_INCLUDE_DIRS)
   list(APPEND TIFF_INCLUDES ${ZLIB_INCLUDE_DIRS})
@@ -232,6 +244,9 @@ if(JBIG_INCLUDE_DIR)
 endif()
 if(LIBLZMA_INCLUDE_DIRS)
   list(APPEND TIFF_INCLUDES ${LIBLZMA_INCLUDE_DIRS})
+endif()
+if(WEBP_INCLUDE_DIRS)
+  list(APPEND TIFF_INCLUDES ${WEBP_INCLUDE_DIRS})
 endif()
 
 # Libraries required by libtiff
@@ -253,6 +268,9 @@ if(JBIG_LIBRARIES)
 endif()
 if(LIBLZMA_LIBRARIES)
   list(APPEND TIFF_LIBRARY_DEPS ${LIBLZMA_LIBRARIES})
+endif()
+if(WEBP_LIBRARIES)
+  list(APPEND TIFF_LIBRARY_DEPS ${WEBP_LIBRARIES})
 endif()
 
 if(TARGET_LINK_LIB)
