@@ -210,18 +210,19 @@ else()
 endif()
 
 # 8/12-bit jpeg mode
-find_anyproject(JPEG12)
+find_anyproject(JPEG12 CMAKE_ARGS -DBUILD_JPEG_12=ON -DBUILD_APPS=OFF)
 if (JPEG12_FOUND)
   set(JPEG_DUAL_MODE_8_12 1)
-  set(LIBJPEG_12_PATH "\"${JPEG12_INCLUDE_DIRS}/jpeglib.h\"")
-  add_definitions(-DLIBJPEG_12_PATH="${JPEG12_INCLUDE_DIRS}/jpeglib.h")
+  find_file(LIBJPEG_12_PATH NAMES jpeglib.h PATHS ${JPEG12_INCLUDE_DIRS})
+  set(LIBJPEG_12_PATH "\"${LIBJPEG_12_PATH}\"")
+  add_definitions(-DLIBJPEG_12_PATH=${LIBJPEG_12_PATH})
   set(JPEG12_FOUND TRUE)
 else()
   set(JPEG12_FOUND FALSE)
 endif()
 
 # libwebp
-find_anyproject(WEBP)
+find_anyproject(WEBP CMAKE_ARGS -DWEBP_BUILD_VWEBP=OFF -DWEBP_BUILD_CWEBP=OFF -DWEBP_BUILD_DWEBP=OFF)
 if(WEBP_FOUND)
   set(WEBP_SUPPORT 1)
 else()
