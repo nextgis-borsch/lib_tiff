@@ -94,6 +94,4 @@ install(FILES ${man1_MANS}
         DESTINATION "${INSTALL_MAN_DIR}/man1")
 install(FILES ${man3_MANS}
         DESTINATION "${INSTALL_MAN_DIR}/man3")
-
-extra_dist(${man1_MANS} ${man3_MANS})
 endif()

@@ -93,8 +93,6 @@ set(docfiles
 
 set(doc_DATA ${indexfile} ${docfiles})
 
-extra_dist(${doc_DATA})
-
 install(FILES ${doc_DATA}
         DESTINATION "${INSTALL_DOC_DIR}/html/man")
 
