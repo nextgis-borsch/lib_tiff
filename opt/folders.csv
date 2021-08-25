@@ -12,4 +12,4 @@ port,port,,"c,h,in"
 test,test,,"c,cmake,h,sh"
 test/images,test/images,,"tiff,pgm,ppm,g3,pbm"
 tools,tools,,c
-cmake,cmake,,"CompilerChecks.cmake,CXXLibrary.cmake,IncludeChecks.cmake,LibraryFeatures.cmake,LinkerChecks.cmake,ProcessorChecks.cmake,SymbolChecks.cmake,TypeSizeChecks.cmake,WindowsSupport.cmake"
+cmake,cmake,,"CompilerChecks.cmake,CXXLibrary.cmake,IncludeChecks.cmake,LibraryFeatures.cmake,LinkerChecks.cmake,ProcessorChecks.cmake,SymbolChecks.cmake,TypeSizeChecks.cmake,WindowsSupport.cmake,OpenGLChecks.cmake"
