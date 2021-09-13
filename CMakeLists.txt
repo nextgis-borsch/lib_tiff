@@ -160,6 +160,8 @@ include(WindowsSupport)
 # Orthogonal features
 include(LibraryFeatures)
 
+include(InternalCodecs)
+
 include(FindAnyProject)
 
 find_anyproject(ZLIB)
