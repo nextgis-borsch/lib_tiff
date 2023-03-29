@@ -243,11 +243,17 @@ endif()
 set(PACKAGE_NAME ${PROJECT_NAME})
 string(TOUPPER ${PACKAGE_NAME} PACKAGE_UPPER_NAME)
 
+option(BUILD_TOOLS "Build tools" ON)
+
 # Process subdirectories
 add_subdirectory(port)
 add_subdirectory(libtiff)
-add_subdirectory(tools)
-add_subdirectory(test)
+if(BUILD_TOOLS)
+    add_subdirectory(tools)
+endif()
+if(BUILD_TESTING)
+    add_subdirectory(test)
+endif()
 add_subdirectory(man)
 add_subdirectory(html)
 

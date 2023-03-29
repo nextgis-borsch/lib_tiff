@@ -210,11 +210,6 @@ if(CXX_SUPPORT)
       FRAMEWORK DESTINATION ${INSTALL_LIB_DIR})
 endif()
 
-if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL AND NOT WIN32)
-  install(FILES ${CMAKE_BINARY_DIR}/libtiff-4.pc
-        DESTINATION "${INSTALL_LIB_DIR}/pkgconfig")
-endif()
-
 # Add path to includes to build-tree export
 target_include_directories(${LIB_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
